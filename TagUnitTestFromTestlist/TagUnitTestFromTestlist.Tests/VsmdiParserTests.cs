@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
 using TagUnitTestFromTestlist.Utils;
 
 namespace TagUnitTestFromTestlist.Tests
@@ -15,9 +16,23 @@ namespace TagUnitTestFromTestlist.Tests
         }
 
         [TestMethod]
-        public void CanReadFileFromDisk()
+        public void ReadFileFromDisk_ReadSuccessfully()
         {
             _vsmdiParser.ReadFile("testlist.vsmdi");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FileNotFoundException))]
+        public void ReadNonExistingFileFromDisk_ThrowsError()
+        {
+            _vsmdiParser.ReadFile("non-existing.vsmdi");
+        }
+
+        [TestMethod]
+        public void ParseTestFileWithTwoLists_TwoTypedListsReturned()
+        {
+            var testlists = _vsmdiParser.ReadFile("testlist.vsmdi");
+            Assert.AreEqual(2, testlists.Count);
         }
     }
 }

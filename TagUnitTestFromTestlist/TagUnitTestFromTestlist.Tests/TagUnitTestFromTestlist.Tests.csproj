@@ -59,6 +59,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TagUnitTestFromTestlist.Models\TagUnitTestFromTestlist.Models.csproj">
+      <Project>{d15e6375-9f0c-45e4-9c65-dd191d6ff869}</Project>
+      <Name>TagUnitTestFromTestlist.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TagUnitTestFromTestlist.Utils\TagUnitTestFromTestlist.Utils.csproj">
       <Project>{60cf4ce9-fd59-4bf6-b888-f2c5e5a945ff}</Project>
       <Name>TagUnitTestFromTestlist.Utils</Name>

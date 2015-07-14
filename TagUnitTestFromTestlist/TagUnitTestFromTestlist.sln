@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagUnitTestFromTestlist.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagUnitTestFromTestlist.Utils", "TagUnitTestFromTestlist.Utils\TagUnitTestFromTestlist.Utils.csproj", "{60CF4CE9-FD59-4BF6-B888-F2C5E5A945FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagUnitTestFromTestlist.Models", "TagUnitTestFromTestlist.Models\TagUnitTestFromTestlist.Models.csproj", "{D15E6375-9F0C-45E4-9C65-DD191D6FF869}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{60CF4CE9-FD59-4BF6-B888-F2C5E5A945FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60CF4CE9-FD59-4BF6-B888-F2C5E5A945FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60CF4CE9-FD59-4BF6-B888-F2C5E5A945FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D15E6375-9F0C-45E4-9C65-DD191D6FF869}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D15E6375-9F0C-45E4-9C65-DD191D6FF869}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D15E6375-9F0C-45E4-9C65-DD191D6FF869}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D15E6375-9F0C-45E4-9C65-DD191D6FF869}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
