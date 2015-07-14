@@ -12,9 +12,17 @@ namespace TagUnitTestFromTestlist.Utils
             var vsmdiXmlDocument = XDocument.Load(filepath);
 
             var testlists = vsmdiXmlDocument
-                                .Descendants().Where(d => d.Name.LocalName.Equals("TestList"))
+                                .Descendants()
+                                .Where(d => d.Name.LocalName.Equals("TestList"))
                                 .Select(tl => new TestList {
-                                    Name = tl.Attribute("name").Value
+                                    Name = tl.Attribute("name").Value,
+                                    Tests = tl.Descendants()
+                                                .Where(d => d.Name.LocalName.Equals("TestLink"))
+                                                .Select(t => new Test
+                                                {
+                                                    Name = tl.Attribute("name").Value
+                                                })
+                                                .ToList()
                                 })
                                 .ToList();
 

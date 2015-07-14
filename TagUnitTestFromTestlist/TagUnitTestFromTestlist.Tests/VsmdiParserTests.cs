@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using System.Linq;
 using TagUnitTestFromTestlist.Utils;
 
 namespace TagUnitTestFromTestlist.Tests
@@ -29,10 +30,20 @@ namespace TagUnitTestFromTestlist.Tests
         }
 
         [TestMethod]
-        public void ParseTestFileWithTwoLists_TwoTypedListsReturned()
+        public void ParseTestFileWithThreeLists_ThreeTypedListsReturned()
         {
             var testlists = _vsmdiParser.ReadFile("testlist.vsmdi");
-            Assert.AreEqual(2, testlists.Count);
+            Assert.AreEqual(3, testlists.Count);
+        }
+
+        [TestMethod]
+        public void ParseTestFile_HasCorrectNumberOfTestsInTestLists()
+        {
+            var testlists = _vsmdiParser.ReadFile("testlist.vsmdi");
+            var unitTests = testlists.Single(tl => tl.Name.Equals("Unit tests")).Tests.Count;
+            var integrationTests = testlists.Single(tl => tl.Name.Equals("Integration tests")).Tests.Count;
+            Assert.AreEqual(2, unitTests);
+            Assert.AreEqual(1, integrationTests);
         }
     }
 }
