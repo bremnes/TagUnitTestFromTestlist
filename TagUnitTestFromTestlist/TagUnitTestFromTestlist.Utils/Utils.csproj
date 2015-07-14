@@ -44,9 +44,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TagUnitTestFromTestlist.Models\TagUnitTestFromTestlist.Models.csproj">
+    <ProjectReference Include="..\TagUnitTestFromTestlist.Models\Models.csproj">
       <Project>{d15e6375-9f0c-45e4-9c65-dd191d6ff869}</Project>
-      <Name>TagUnitTestFromTestlist.Models</Name>
+      <Name>Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagUnitTestFromTestlist.Tests", "TagUnitTestFromTestlist.Tests\TagUnitTestFromTestlist.Tests.csproj", "{E6A3E9B1-EDCF-4CA6-B88A-67696965FEA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "TagUnitTestFromTestlist.Tests\Tests.csproj", "{E6A3E9B1-EDCF-4CA6-B88A-67696965FEA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagUnitTestFromTestlist.Utils", "TagUnitTestFromTestlist.Utils\TagUnitTestFromTestlist.Utils.csproj", "{60CF4CE9-FD59-4BF6-B888-F2C5E5A945FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "TagUnitTestFromTestlist.Utils\Utils.csproj", "{60CF4CE9-FD59-4BF6-B888-F2C5E5A945FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagUnitTestFromTestlist.Models", "TagUnitTestFromTestlist.Models\TagUnitTestFromTestlist.Models.csproj", "{D15E6375-9F0C-45E4-9C65-DD191D6FF869}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "TagUnitTestFromTestlist.Models\Models.csproj", "{D15E6375-9F0C-45E4-9C65-DD191D6FF869}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
