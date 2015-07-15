@@ -10,19 +10,20 @@ namespace TagUnitTestFromTestlist.Tests
     public class AdhocWorkspaceTests
     {
         [TestMethod]
-        public void ManualTestToCheckLogic()
+        public void CreateAndManipulateAdhocWorkspace_UnderstandingIsCorrect()
         {
-            var adhocWorkspace = new AdhocWorkspace();
-            var solution = adhocWorkspace.CurrentSolution;
+            using (var adhocWorkspace = new AdhocWorkspace())
+            {
+                var solution = adhocWorkspace.CurrentSolution;
+                var newProject = adhocWorkspace.AddProject("Project.Test", LanguageNames.CSharp);
+                adhocWorkspace.AddDocument(newProject.Id, "TestFile.cs", SourceText.From("public class Bar { }"));
 
-            var newProject = adhocWorkspace.AddProject("Project.Test", LanguageNames.CSharp);
-            adhocWorkspace.AddDocument(newProject.Id, "TestFile.cs", SourceText.From("public class Bar { }"));
-
-            Assert.AreEqual(1, adhocWorkspace.CurrentSolution.Projects.Count());
-            var project = adhocWorkspace.CurrentSolution.Projects.Single();
-            Assert.AreEqual("Project.Test", project.Name);
-            Assert.AreEqual(1, project.Documents.Count());
-            Assert.AreEqual("TestFile.cs", project.Documents.Single().Name);
+                Assert.AreEqual(1, adhocWorkspace.CurrentSolution.Projects.Count());
+                var project = adhocWorkspace.CurrentSolution.Projects.Single();
+                Assert.AreEqual("Project.Test", project.Name);
+                Assert.AreEqual(1, project.Documents.Count());
+                Assert.AreEqual("TestFile.cs", project.Documents.Single().Name);
+            }
         }
     }
 }
