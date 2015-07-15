@@ -99,7 +99,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AdhocWorkspaceTests.cs" />
-    <Compile Include="Builders\DocumentBuilder.cs" />
     <Compile Include="Categorizer\DocumentManipulatorTests.cs" />
     <Compile Include="VsmdiParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
