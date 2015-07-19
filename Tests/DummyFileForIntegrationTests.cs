@@ -3,6 +3,7 @@
 namespace TagUnitTestFromTestlist.Tests
 {
     [TestClass]
+    [Ignore] // dummy file used for integration testing
     public class DummyFileForIntegrationTests
     {
         [TestMethod]
