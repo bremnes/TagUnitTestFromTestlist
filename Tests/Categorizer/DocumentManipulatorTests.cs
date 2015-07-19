@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using TagUnitTestFromTestlist.Categorizer;
+using TagUnitTestFromTestlist.Models;
 
 namespace TagUnitTestFromTestlist.Tests.Categorizer
 {
@@ -18,7 +19,7 @@ namespace TagUnitTestFromTestlist.Tests.Categorizer
         public void MethodNotTestMethod_DoNotChange()
         {
             var originalCode = "public class Bar { public void MyFancyMethod() {} }";
-            var newCode = CategorizeTestMethods(originalCode, "\"Unit test\"");
+            var newCode = CategorizeTestMethods(originalCode, "Unit test");
 
             Assert.AreEqual(originalCode, newCode.ToString());
         }
@@ -27,7 +28,7 @@ namespace TagUnitTestFromTestlist.Tests.Categorizer
         public void TestMethodNotInList_NotCategorized()
         {
             var originalCode = "public class Bar {[TestMethod] public void MyFancyTest() {}}";
-            var newCode = CategorizeTestMethods(originalCode, "\"Unit test\"", "MethodToTag");
+            var newCode = CategorizeTestMethods(originalCode, "Unit test", "MethodToTag");
 
             Assert.AreEqual(originalCode, newCode.ToString());
         }
@@ -36,7 +37,7 @@ namespace TagUnitTestFromTestlist.Tests.Categorizer
         public void TestMethodInList_Categorized()
         {
             var originalCode = "public class Bar {[TestMethod] public void MyFancyTest() {}}";
-            var newCode = CategorizeTestMethods(originalCode, "\"Unit test\"", "MyFancyTest");
+            var newCode = CategorizeTestMethods(originalCode, "Unit test", "MyFancyTest");
 
             Assert.AreNotEqual(originalCode, newCode);
             Assert.IsTrue(newCode.Contains("[TestCategory(\"Unit test\")]"));
@@ -46,7 +47,7 @@ namespace TagUnitTestFromTestlist.Tests.Categorizer
         public void TestMethodsInList_CategorizedMultiple()
         {
             var originalCode = "public class Bar {[TestMethod] public void MyFancyTest() {} [TestMethod] public void MySecondTest() {}}";
-            var newCode = CategorizeTestMethods(originalCode, "\"Unit test\"", "MyFancyTest", "MySecondTest");
+            var newCode = CategorizeTestMethods(originalCode, "Unit test", "MyFancyTest", "MySecondTest");
 
             Assert.AreNotEqual(originalCode, newCode);
             Assert.AreEqual(2, Regex.Matches(newCode, Regex.Escape("[TestCategory(\"Unit test\")]")).Count);
@@ -60,7 +61,7 @@ namespace TagUnitTestFromTestlist.Tests.Categorizer
             var syntaxTree = CSharpSyntaxTree.ParseText(File.ReadAllText(path));
             var documentManipulator = new DocumentManipulator(syntaxTree);
 
-            documentManipulator.CategorizeTestMethods(new List<string> { "TestMethod1" }, "\"Unit test\"");
+            documentManipulator.CategorizeTestMethods(new TestToCategorize { Name = "UnitTestWithSomeFancyLogic", CategoryName = "Unit test" });
             if (documentManipulator.HasRecategorized)
             {
                 documentManipulator.SaveChanges(path);
@@ -82,7 +83,7 @@ namespace TagUnitTestFromTestlist.Tests.Categorizer
                 {
                     var documentManipulator = new DocumentManipulator(document, workspace);
                     var guid = System.Guid.NewGuid();
-                    documentManipulator.CategorizeTestMethods(new List<string> { "TestMethod1" }, "\"" + guid + "\"");
+                    documentManipulator.CategorizeTestMethods(new TestToCategorize { Name = "UnitTestWithSomeFancyLogic", CategoryName = guid.ToString() });
 
                     if (documentManipulator.HasRecategorized)
                     {
@@ -102,7 +103,7 @@ namespace TagUnitTestFromTestlist.Tests.Categorizer
                 document = adhocWorkspace.AddDocument(newProject.Id, "TestFile.cs", SourceText.From(originalCode));
 
                 var documentManipulator = new DocumentManipulator(document, adhocWorkspace);
-                documentManipulator.CategorizeTestMethods(testToTag.ToList(), testCategoryToAdd);
+                documentManipulator.CategorizeTestMethods(testToTag.Select(t => new TestToCategorize { Name = t, CategoryName = testCategoryToAdd }));
 
                 return documentManipulator.SyntaxNode.ToString();
             }

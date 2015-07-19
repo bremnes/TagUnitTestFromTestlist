@@ -101,6 +101,7 @@
     <Compile Include="AdhocWorkspaceTests.cs" />
     <Compile Include="Categorizer\DocumentManipulatorTests.cs" />
     <Compile Include="DummyFileForIntegrationTests.cs" />
+    <Compile Include="TestListCategorizerTests.cs" />
     <Compile Include="VsmdiParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

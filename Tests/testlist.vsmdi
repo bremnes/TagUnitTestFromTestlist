@@ -3,13 +3,13 @@
   <TestList name="Lists of Tests" id="8243106b-9dc1-4907-a29f-aa66a61bf5b6">
     <RunConfiguration id="72f703a8-f1c9-42af-ae18-72b84194f03c" name="Test.Project" storage="sample.testrunconfig" type="Microsoft.VisualStudio.TestTools.Common.TestRunConfiguration, Microsoft.VisualStudio.QualityTools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   </TestList>
-  <TestList name="Unit tests" id="c877f8d1-f4f8-46dc-bacf-7cb18fb9d996" parentListId="8243106b-9dc1-4907-a29f-aa66a61bf5b6">
+  <TestList name="Unit test" id="c877f8d1-f4f8-46dc-bacf-7cb18fb9d996" parentListId="8243106b-9dc1-4907-a29f-aa66a61bf5b6">
     <TestLinks>
       <TestLink id="abcdc6b4-0c26-6db5-c267-96ac73d3a59b" name="UnitTestWithSomeFancyLogic" storage="some\path\to\test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
       <TestLink id="4ab12a85-4ee2-82a4-6714-45c7d0b9f53c" name="UnitTestCheckingBusinessLogic" storage="some\path\to\test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     </TestLinks>
   </TestList>
-  <TestList name="Integration tests" id="c877f8d1-f4f8-42dc-bacf-7cb18fb9d996" parentListId="8243106b-9dc1-4907-a29f-aa66a61bf5b6">
+  <TestList name="Integration test" id="c877f8d1-f4f8-42dc-bacf-7cb18fb9d996" parentListId="8243106b-9dc1-4907-a29f-aa66a61bf5b6">
     <TestLinks>
       <TestLink id="abcdc6b4-0c26-6db5-c267-96ac73d3a59b" name="IntegrationTestWithDatabaseQuery" storage="some\path\to\test.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     </TestLinks>

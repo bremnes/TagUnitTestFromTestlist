@@ -40,10 +40,11 @@ namespace TagUnitTestFromTestlist.Tests
         public void ParseTestFile_HasCorrectNumberOfTestsInTestLists()
         {
             var testlists = _vsmdiParser.ReadFile("testlist.vsmdi");
-            var unitTests = testlists.Single(tl => tl.Name.Equals("Unit tests")).Tests.Count;
-            var integrationTests = testlists.Single(tl => tl.Name.Equals("Integration tests")).Tests.Count;
-            Assert.AreEqual(2, unitTests);
+            var unitTests = testlists.Single(tl => tl.Name.Equals("Unit test")).Tests;
+            var integrationTests = testlists.Single(tl => tl.Name.Equals("Integration test")).Tests.Count;
+            Assert.AreEqual(2, unitTests.Count);
             Assert.AreEqual(1, integrationTests);
+            Assert.AreEqual("Unit test", unitTests.First().CategoryName);
         }
     }
 }

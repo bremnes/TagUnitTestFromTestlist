@@ -7,12 +7,17 @@ namespace TagUnitTestFromTestlist.Tests
     public class DummyFileForIntegrationTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void UnitTestWithSomeFancyLogic()
         {
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void UnitTestCheckingBusinessLogic()
+        {
+        }
+
+        [TestMethod]
+        public void IntegrationTestWithDatabaseQuery()
         {
         }
     }

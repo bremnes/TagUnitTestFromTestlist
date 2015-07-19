@@ -18,9 +18,10 @@ namespace TagUnitTestFromTestlist.Utils
                                     Name = tl.Attribute("name").Value,
                                     Tests = tl.Descendants()
                                                 .Where(d => d.Name.LocalName.Equals("TestLink"))
-                                                .Select(t => new Test
+                                                .Select(t => new TestToCategorize
                                                 {
-                                                    Name = tl.Attribute("name").Value
+                                                    Name = t.Attribute("name").Value,
+                                                    CategoryName = tl.Attribute("name").Value
                                                 })
                                                 .ToList()
                                 })

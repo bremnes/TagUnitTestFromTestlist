@@ -5,6 +5,6 @@ namespace TagUnitTestFromTestlist.Models
     public class TestList
     {
         public string Name { get; set; }
-        public IList<Test> Tests { get; set; }
+        public IList<TestToCategorize> Tests { get; set; }
     }
 }

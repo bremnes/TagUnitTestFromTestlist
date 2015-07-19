@@ -7,3 +7,5 @@ So in order to clean up, here's a small utility which reads a solution file, the
 If you specify which test list in the vsmdi file you want to process, you can also specify a test category name. For instance one can tag all test methods in one list with [TestCategory("Unit test")], and another list with [TestCategory("Integration test")].
 
 All test methods that are not in a test list will remain untouched.
+
+For examples and usage, see Tests\TestListCategorizerTests.cs.

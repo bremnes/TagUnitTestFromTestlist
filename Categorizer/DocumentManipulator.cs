@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using TagUnitTestFromTestlist.Models;
 
 namespace TagUnitTestFromTestlist.Categorizer
 {
@@ -42,24 +43,31 @@ namespace TagUnitTestFromTestlist.Categorizer
 
         public bool HasRecategorized { get { return _madeChanges; } }
 
-        public void CategorizeTestMethods(List<string> testmethods, string category)
+
+        public void CategorizeTestMethods(TestToCategorize testmethod)
+        {
+            CategorizeTestMethods(new List<TestToCategorize> { testmethod });
+        }
+
+        public void CategorizeTestMethods(IEnumerable<TestToCategorize> testmethods)
         {
             var methods = _syntaxNode
                                     .DescendantNodes()
                                     .OfType<MethodDeclarationSyntax>()
                                     .Where(m => 
                                         IsTestMethod(m) 
-                                        && testmethods.Contains(m.Identifier.Value));
+                                        && testmethods.Any(t => t.Name.Equals(m.Identifier.Value)));
 
             foreach (var method in methods)
             {
+                var categoryEncapsulated = string.Format("\"{0}\"", testmethods.First(t => t.Name.Equals(method.Identifier.Value)).CategoryName);
                 var testCategoryAttributes = FindAttributesWithName(method, "TestCategory");
-                if (testCategoryAttributes.Any(tca => tca.ArgumentList.Arguments.Any(a => a.ToString().Equals(category))))
+                if (testCategoryAttributes.Any(tca => tca.ArgumentList.Arguments.Any(a => a.ToString().Equals(categoryEncapsulated))))
                 {
                     continue;
                 }
 
-                var newMethodWithTestCategory = AddMethodAttribute(method, "TestCategory", category);
+                var newMethodWithTestCategory = AddMethodAttribute(method, "TestCategory", categoryEncapsulated);
                 var oldMethodFromManipulatedSyntaxNode = GetMethodFromCurrentSyntaxRoot(method);
                 _syntaxNode = _syntaxNode.ReplaceNode(oldMethodFromManipulatedSyntaxNode, newMethodWithTestCategory);
 
